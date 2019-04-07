@@ -3,7 +3,7 @@
   = render 'shared/chat-side'
   .chat-main
     .main-header
-      .current-group{"data-group_id": "334"}
+      .main-header__current-group{"data-group_id": "334"}
         %h2.current-group__name グループ１
         %ul.member-list
           Member：
@@ -15,17 +15,17 @@
         .main-header__edit-btn Edit
     .messages
       .message{"data-message_id": "714"}
-        .upper-info
-          %p.upper-info__user カレントユーザー
-          %p.upper-info__date 2019/04/06(Sat) 17:56:26
+        .message__upper-info
+          %p.message__upper-info__user カレントユーザー
+          %p.message__upper-info__date 2019/04/06(Sat) 17:56:26
         %p.message__text uhui
         %img{alt: "Bem 7", src: "/uploads/message/image/714/bem-7.jpg"}/
     .form
       %form#new_message.new-message{"accept-charset": "UTF-8", action: "/groups/334/messages", enctype: "multipart/form-data", method: "post"}
         %input{name: "utf8", type: "hidden", value: "✓"}/
         %input{name: "authenticity_token", type: "hidden", value: ""}/
-        .input-box
-          %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+        .new-message__input-box
+          %input#message_content.new-message__input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
           %label.image-label{for: "message_image"}
             %i.fa.fa-image
             %input#message_image.image-label__input{name: "message[image]", type: "file"}/

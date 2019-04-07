@@ -4,7 +4,7 @@
     width: 300px;
     color: $white-text;
     float: left;
-    .side-header {
+    &__side-header {
       background-color: $chat-side-bg;
       height: 100px;
       display: flex;
@@ -13,7 +13,7 @@
       justify-content: space-between;
       width: 100%;
       font-weight: bold;
-      .user-menu {
+      &__user-menu {
         display: flex;
         & li {
           margin-left: 0.3rem;
@@ -34,7 +34,7 @@
         }
       }
     }
-    .groups {
+    &__groups {
       height: calc(100vh - 100px);
       background-color: lighten( $chat-side-bg, 5% );
       padding: 20px 20px 0;
@@ -61,7 +61,7 @@
       display: flex;
       justify-content: space-between;
       border-bottom: solid 1px #eee;
-      .current-group {
+      &__current-group {
         font-size: 20px;
         color: $character;
         margin-top: 35px;
@@ -91,7 +91,7 @@
       overflow: scroll;
       .message {
         padding-bottom: 40px;
-        .upper-info {
+        &__upper-info {
           display: flex;
           margin-bottom: 10px;
           &__user {
@@ -118,7 +118,7 @@
       background-color: $chat-main-bg;
       .new-message {
         display: flex;
-        .input-box {
+        &__input-box {
           position: relative;
           width: 100%;
           &__text {

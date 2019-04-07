@@ -1,14 +1,14 @@
 .chat-side
-  .side-header
-    %p.side-header__user-name カレントユーザー
-    %ul.user-menu
+  .chat-side__side-header
+    %p.chat-side__side-header__user-name カレントユーザー
+    %ul.chat-side__side-header__user-menu
       %li.user-menu__edit-user
         %a{href: "/groups/new"}
           %i.fa.fa-edit
       %li.user-menu__new-group
         %a{href: "/users/201/edit"}
           %i.fa.fa-cog
-  .groups
+  .chat-side__groups
     %a{href: "/groups/334/messages"}
       .group
         %p.group__group-name グループ１
