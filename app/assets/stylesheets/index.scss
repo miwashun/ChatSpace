@@ -1,12 +1,14 @@
+@import "color";
 * {
-  box-sizing: border-box;
-
+    box-sizing: border-box;
+}
+.wrapper {
   .chat-side {
     width: 300px;
-    color: white;
+    color: $white-text;
     float: left;
     .side-header {
-      background-color: #253141;
+      background-color: $base-color;
       height: 100px;
       display: flex;
       align-items: center;
@@ -37,7 +39,7 @@
     }
     .groups {
       height: calc(100vh - 100px);
-      background-color: #2f3e51;
+      background-color: lighten( $base-color, 15% );
       padding: 20px 20px 0;
       overflow: scroll;
       .group {
@@ -47,7 +49,7 @@
           margin-bottom: 5px;
         }
         &__latest-message {
-            font-size: 11px;
+          font-size: 11px;
         }
       }
     }
@@ -64,13 +66,13 @@
       border-bottom: solid 1px #eee;
       .current-group {
         font-size: 20px;
-        color: #333;
+        color: $character;
         margin-top: 35px;
         .member-list {
           display: flex;
           margin-top: 15px;
           font-size: 12px;
-          color: #999999;
+          color:  lighten( $character, 30% );
           & li+li {
             margin-left: 0.3rem;
           }
@@ -81,8 +83,8 @@
         line-height: 40px;
         padding: 0 20px;
         margin-top: 30px;
-        border: solid 1px #38aef0;
-        color: #38aef0;
+        border: solid 1px $button;
+        color: $button;
       }
     }
     .messages {
@@ -96,18 +98,18 @@
           display: flex;
           margin-bottom: 10px;
           &__user {
-              color: #434a54;
+              color: $character;
               font-size: 16px;
               font-weight: bold;
           }
           &__date {
-              color: #999999;
+              color: lighten( $character, 30% );
               font-size: 12px;
               margin-left: 10px;
           }
         }
         &__text {
-          color: #434a54;
+          color: lighten( $character, 15% );
           font-size: 14px;
           margin-bottom: 10px;
         }
@@ -148,15 +150,15 @@
           height: 50px;
           padding: 0 30px;
           margin-left: 15px;
-          background-color: #38aef0;
-          color: white;
+          background-color: $button;
+          color: $white-text;
           cursor: pointer;
         }
       }
     }
   }
   & a {
-    color: white;
+    color: $white-text;
     text-decoration: none;
   }
 }
