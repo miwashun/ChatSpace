@@ -6,42 +6,42 @@
         %p.side-header__user-name aiu
         %ul.user-menu
           %li.user-menu__edit-user
-            %a{:href => "/groups/new"}
+            %a{href: "/groups/new"}
               %i.fa.fa-edit
           %li.user-menu__new-group
-            %a{:href => "/users/201/edit"}
+            %a{href: "/users/201/edit"}
               %i.fa.fa-cog
       .groups
-        %a{:href => "/groups/334/messages"}
+        %a{href: "/groups/334/messages"}
           .group
             %p.group__group-name tt
             %p.group__latest-message まだメッセージがありません
     .chat-main
       .main-header
-        .current-group{"data-group_id" => "334"}
+        .current-group{"data-group_id": "334"}
           %h2.current-group__name tt
           %ul.member-list
             Member：
-            %li.member-list__member aaaaaaaaaaa
-            %li.member-list__member aaa
-            %li.member-list__member aaaa
-            %li.member-list__member aiu
-        %a{:href => "/groups/334/edit"}
+            %li.member-list__member taro
+            %li.member-list__member jiro
+            %li.member-list__member sabu
+            %li.member-list__member shiro
+        %a{href: "/groups/334/edit"}
           .main-header__edit-btn Edit
       .messages
-        .message{"data-message_id" => "714"}
+        .message{"data-message_id": "714"}
           .upper-info
             %p.upper-info__user aiu
             %p.upper-info__date 2019/04/06(Sat) 17:56:26
           %p.message__text uhui
-          %img{:alt => "Bem 7", :src => "/uploads/message/image/714/bem-7.jpg"}/
+          %img{alt: "Bem 7", src: "/uploads/message/image/714/bem-7.jpg"}/
       .form
-        %form#new_message.new-message{"accept-charset" => "UTF-8", :action => "/groups/334/messages", :enctype => "multipart/form-data", :method => "post"}
-          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-          %input{:name => "authenticity_token", :type => "hidden", :value => "B041osdE0ZJUZDqbQpnGyKFsqC0uuB1LajfXykdQ5srMs3J8n0bQAUfoeVlhTpuCrnJ3iyQptHL8kKph11RU1g=="}/
+        %form#new_message.new-message{"accept-charset": "UTF-8", action: "/groups/334/messages", enctype: "multipart/form-data", method: "post"}
+          %input{name: "utf8", type: "hidden", value: "✓"}/
+          %input{name: "authenticity_token", type: "hidden", value: ""}/
           .input-box
-            %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-            %label.image-label{:for => "message_image"}
+            %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+            %label.image-label{for: "message_image"}
               %i.fa.fa-image
-              %input#message_image.image-label__input{:name => "message[image]", :type => "file"}/
-          %input.new-message__submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+              %input#message_image.image-label__input{name: "message[image]", type: "file"}/
+          %input.new-message__submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
