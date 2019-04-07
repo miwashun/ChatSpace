@@ -26,7 +26,7 @@
         %input{name: "authenticity_token", type: "hidden", value: ""}/
         .new-message__input-box
           %input#message_content.new-message__input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
-          %label.image-label{for: "message_image"}
+          %label.new-message__input-box__image-label{for: "message_image"}
             %i.fa.fa-image
-            %input#message_image.image-label__input{name: "message[image]", type: "file"}/
+            %input#message_image.new-message__input-box__image-label__input{name: "message[image]", type: "file"}/
         %input.new-message__submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
