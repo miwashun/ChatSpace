@@ -6,11 +6,51 @@
 
 * Database creation
 
-## groupsテーブル
+## messageテーブル
+
+|Column|Type|Options|
+|:-----|---:|:-----:|
+|body  |text|null: false|
+|image|text|null: false|
+|group_id|integer|null: false,foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+
+- belongs_to :group
+- belongs_to :user
+
+## userテーブル
+
+|Column|type|Options|
+|:-----|---:|:-----:|
+|name|string|null: false|
+|group_id|integer|null: false, foreign_key: true|
+
+### Association
+
+- has_many :groups, through: :group_users
+- has_many :group_users
+- has_many :messages
+
+## groupテーブル
+
+|Column|Type|Options|
+|:-----|---:|:-----:|
+|name|string|null: false|
+
+### Association
+
+- has_many :users, through: :group_users
+- has_many :group_users
+
+## group-userテーブル
+
 |Column|Type|Options|
 |:------|----:|:-------:|
+|name|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
-group_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -23,53 +63,3 @@ group_id|integer|null: false, foreign_key: true|
 
     search engines
 
-* Deployment instructions
-
-> "引用"
-
->引用
->>入れ子
-
-* リスト1
-    * リスト1-2
-* リスト2
-
-1. リスト1-1
-    2. リスト１−２
-2. リスト２
-
-- [ ] リスト１
-- [x] リスト２
-
-* * *
-あ
-***
-い
-*****
-う
-- - -
-え
---------------
-お
-_ _ _
-か
-______________
-き
-*強調*
-**強調**
-***強調***
-
-~~打ち消し~~
-
-本文\[^注釈]
-\[^注釈]:注釈です
-
-`$hoge = 1`
-`.md`
-
-```html:sample
-   <div class="radioWave">
-     <p>テスト</p>
-     <p>てすと</p>
-   </div>
-```
