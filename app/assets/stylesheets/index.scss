@@ -83,9 +83,6 @@
           cursor: pointer;
           &__input {
             display: none;
-            .fa-photo:before, .fa-image:before, .fa-picture-o:before {
-                content: "\f03e";
-            }
           }
         }
       }
