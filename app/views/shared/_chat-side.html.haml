@@ -1,12 +1,13 @@
 .chat-side
   .chat-side__side-header
-    %p.chat-side__side-header__user-name カレントユーザー
+    %p.chat-side__side-header__user-name
+      = current_user.name
     %ul.chat-side__side-header__user-menu
       %li.user-menu__edit-user
-        %a{href: "/groups/new", class: "white-text"}
+        = link_to do
           %i.fa.fa-edit
       %li.user-menu__new-group
-        %a{href: "/users/201/edit", class: "white-text"}
+        = link_to edit_user_path(current_user), class: "white-text" do
           %i.fa.fa-cog
   .chat-side__groups
     %a{href: "/groups/334/messages", class: "white-text"}
