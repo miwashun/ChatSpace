@@ -4,7 +4,7 @@
       = current_user.name
     %ul.chat-side__side-header__user-menu
       %li.user-menu__edit-user
-        = link_to do
+        = link_to new_group_path, class: "white-text" do
           %i.fa.fa-edit
       %li.user-menu__new-group
         = link_to edit_user_path(current_user), class: "white-text" do
