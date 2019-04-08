@@ -10,8 +10,8 @@
 
 |Column|Type|Options|
 |:-----|---:|:-----:|
-|body  |text|null: false, foreign_key: true|
-|image|text|null: false, foreign_key: true|
+|body  |text|null: false|
+|image|text|null: false|
 |group_id|integer|null: false,foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
@@ -24,7 +24,7 @@
 
 |Column|type|Options|
 |:-----|---:|:-----:|
-|name|string|null: false, foreign_key: true|
+|name|string|null: false|
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
@@ -48,7 +48,7 @@
 
 |Column|Type|Options|
 |:------|----:|:-------:|
-|name|string|null: false, foreign_key: true|
+|name|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
