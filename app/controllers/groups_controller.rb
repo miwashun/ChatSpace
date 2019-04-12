@@ -1,8 +1,12 @@
 class GroupsController < ApplicationController
 
+  def index
+
+  end
+
   def new
     @group = Group.new
-    @groups .users << current_user
+    @group.users << current_user
   end
 
   def create
