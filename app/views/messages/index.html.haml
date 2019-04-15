@@ -14,12 +14,7 @@
       %a{href: "/groups/334/edit"}
         .main-header__edit-btn Edit
     .messages
-      .message{"data-message_id": "714"}
-        .message__upper-info
-          %p.message__upper-info__user カレントユーザー
-          %p.message__upper-info__date 2019/04/06(Sat) 17:56:26
-        %p.message__text uhui
-        %img{alt: "Bem 7", src: "/uploads/message/image/714/bem-7.jpg"}/
+      = render @messages
     .form
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'new_message__input-box__text', placeholder: 'type a message'
