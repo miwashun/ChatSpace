@@ -10,7 +10,7 @@
 
 |Column|Type|Options|
 |:-----|---:|:-----:|
-|body  |text|null: false|
+|content  |text|null: false|
 |image|text|null: false|
 |group_id|integer|null: false,foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
