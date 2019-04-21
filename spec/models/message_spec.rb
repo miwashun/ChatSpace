@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
-  describe 'メッセージ作成' do
-    context 'メッセージセーブ時' do
+  describe 'メッセージ作成テスト' do
+    context 'メッセージセーブ許可' do
       it 'メッセージが含まれているか？' do
         expect(build(:message, image: nil)).to be_valid
       end
@@ -16,8 +16,8 @@ RSpec.describe Message, type: :model do
       end
     end
 
-    context 'セーブ禁止' do
-      it 'メッセージと画像無し' do
+    context 'メッセージセーブ禁止' do
+      it 'メッセージと画像どちらも無し' do
         message = build(:message, content: nil, image: nil)
         message.valid?
         expect(message.errors[:content]).to include('を入力してください')
@@ -32,7 +32,7 @@ RSpec.describe Message, type: :model do
       it 'ユーザーID無し' do
         message = build(:message, user_id: nil)
         message.valid?
-        expect(message.error[:user]).to include('を入力してください')
+        expect(message.errors[:user]).to include('を入力してください')
       end
     end
   end
