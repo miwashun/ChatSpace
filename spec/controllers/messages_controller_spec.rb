@@ -37,7 +37,7 @@ describe MessagesController do
   end
 
   describe '#create' do
-    let(:params) { { group_id: group.id, user_id: user.id, message: attributes_for(message) } }
+    let(:params) { { group_id: group.id, user_id: user.id, message: attributes_for(:message) } }
 
     context 'log in(ログインしている場合のテスト)' do
       before do
@@ -61,7 +61,7 @@ describe MessagesController do
       end
 
       context 'can not save(メッセージの保存に失敗した場合)' do
-        let(:invalid_params) { { group_id: group.id, user_id: user.id, message: attributes_for(:message, context: nil, image: nil) } }
+        let(:invalid_params) { { group_id: group.id, user_id: user.id, message: attributes_for(:message, content: nil, image: nil) } }
 
         subject {
           post :create,
@@ -74,7 +74,7 @@ describe MessagesController do
 
         it 'renders index(意図したビューが描画されているか)' do
           subject
-          expect(response).to redirect_to(new_user_session_path)
+          expect(response).to render_template :index
         end
       end
     end
