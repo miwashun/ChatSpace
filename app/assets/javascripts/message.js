@@ -4,19 +4,17 @@ $(function(){
     var html = `<div class="message">
                   <div class="message__upper-info">
                     <p class="message__upper-info__user">
-                      <%= message.user.name %>
+                      ${message.user_name}
                     </p>
                     <p class="message__upper-info__date">
-                      <%= message.created_at.strftime("%Y/%m/%d %H:%M")  %>
+                      ${message.created_at}
                     </p>
                   </div>
                   <p class="message__text">
-                    <% if message.content.present? %>
                       <p class="lower-message__content">
-                        <%= message.content %>
+                        ${message.content}
                       </p>
-                    <% end %>
-                    <%= image_tag message.image.url, class: 'form__mask__image' if message.image.present? %>
+                    <img class: 'form__mask__image' src="${message.image}">
                   </p>
                 </div>`
     return html;
@@ -37,7 +35,7 @@ $(function(){
 
     .done(function(data){
       var html = buildHTML(data);
-      messages.append(html)
+      $('.messages').append(html)
     })
 
   })
