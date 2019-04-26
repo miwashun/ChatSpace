@@ -40,5 +40,9 @@ $(function(){
       $('.new_message__submit-btn').prop('disabled', false);
     })
 
+    .fail(function(){
+      alert('メッセージが入っていません！');
+      $('.new_message__submit-btn').prop('disabled', false);
+    })
   })
 })
