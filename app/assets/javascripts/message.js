@@ -1,4 +1,7 @@
 $(function(){
+  var MessagesSelector = $('.messages')
+  var CreateMessageSelector = $('#create_message')
+  var SubmitBtnSelector = $('.new_message__submit-btn')
 
   function buildHTML(message){
     var MessageImage = (message.image) ? `<img class: 'form__mask__image' src="${message.image}">` : ""
@@ -21,7 +24,7 @@ $(function(){
     return html;
   }
 
-  $('#create_message').on('submit', function(e){
+  CreateMessageSelector.on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
 
@@ -36,15 +39,15 @@ $(function(){
 
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html)
-      $('#create_message')[0].reset();
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},500, 'swing');
-      $('.new_message__submit-btn').prop('disabled', false);
+      MessagesSelector.append(html)
+      CreateMessageSelector[0].reset();
+      MessagesSelector.animate({scrollTop: MessagesSelector[0].scrollHeight},500, 'swing');
+      SubmitBtnSelector.prop('disabled', false);
     })
 
     .fail(function(){
       alert('メッセージが入っていません！');
-      $('.new_message__submit-btn').prop('disabled', false);
+      SubmitBtnSelector.prop('disabled', false);
     })
   })
 })
