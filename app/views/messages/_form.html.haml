@@ -1,4 +1,4 @@
-= form_for [@group, @message] do |f|
+= form_for [@group, @message],html: {id: "create_message"} do |f|
   = f.text_field :content, class: 'new_message__input-box__text', placeholder: 'type a message'
   .new_message__input-box
     = f.label :image, class: 'new_message__input-box__image-label' do
