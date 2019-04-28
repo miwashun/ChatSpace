@@ -1,10 +1,10 @@
 $(function(){
-  var MessagesSelector = $('.messages')
-  var CreateMessageSelector = $('#create_message')
-  var SubmitBtnSelector = $('.new_message__submit-btn')
+  var messagesSelector = $('.messages')
+  var createMessageSelector = $('#create_message')
+  var submitBtnSelector = $('.new_message__submit-btn')
 
   function buildHTML(message){
-    var MessageImage = (message.image) ? `<img class: 'form__mask__image' src="${message.image}">` : ""
+    var messageImage = (message.image) ? `<img class: 'form__mask__image' src="${message.image}">` : ""
     var html = `<div class="message">
                   <div class="message__upper-info">
                     <p class="message__upper-info__user">
@@ -18,13 +18,13 @@ $(function(){
                       <p class="lower-message__content">
                         ${message.content}
                       </p>
-                    ${MessageImage}
+                    ${messageImage}
                   </p>
                 </div>`
     return html;
   }
 
-  CreateMessageSelector.on('submit', function(e){
+  createMessageSelector.on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
 
@@ -39,15 +39,15 @@ $(function(){
 
     .done(function(data){
       var html = buildHTML(data);
-      MessagesSelector.append(html)
-      CreateMessageSelector[0].reset();
-      MessagesSelector.animate({scrollTop: MessagesSelector[0].scrollHeight},500, 'swing');
-      SubmitBtnSelector.prop('disabled', false);
+      messagesSelector.append(html)
+      createMessageSelector[0].reset();
+      messagesSelector.animate({scrollTop: messagesSelector[0].scrollHeight},500, 'swing');
+      submitBtnSelector.prop('disabled', false);
     })
 
     .fail(function(){
       alert('メッセージが入っていません！');
-      SubmitBtnSelector.prop('disabled', false);
+      submitBtnSelector.prop('disabled', false);
     })
   })
 })
