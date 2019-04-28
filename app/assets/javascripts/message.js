@@ -3,7 +3,7 @@ $(function(){
   var createMessageSelector = $('#create_message')
   var submitBtnSelector = $('.new_message__submit-btn')
 
-  function buildHTML(message){
+  function buildMessageHTML(message){
     var messageImage = (message.image) ? `<img class: 'form__mask__image' src="${message.image}">` : ""
     var html = `<div class="message">
                   <div class="message__upper-info">
@@ -37,8 +37,8 @@ $(function(){
       contentType: false
     })
 
-    .done(function(data){
-      var html = buildHTML(data);
+    .done(function(messageData){
+      var html = buildMessageHTML(messageData);
       messagesSelector.append(html)
       createMessageSelector[0].reset();
       messagesSelector.animate({scrollTop: messagesSelector[0].scrollHeight},500, 'swing');
