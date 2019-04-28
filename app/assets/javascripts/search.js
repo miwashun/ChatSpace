@@ -1,4 +1,5 @@
 $(function() {
+
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
 
@@ -11,7 +12,11 @@ $(function() {
 
     .done(function(users) {
       console.log(this);
+      users.forEach(function(user){
+        console.log(user);
+      })
     })
+
   })
 })
 
