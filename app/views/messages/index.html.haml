@@ -3,7 +3,7 @@
   = render 'shared/chat-side'
   .chat-main
     .main-header
-      .main-header__current-group{"data-group_id": "334"}
+      .main-header__current-group{"data-group_id": ""}
         %h2.current-group__name グループ１
         %ul.member-list
           Member：
@@ -11,8 +11,7 @@
           %li.member-list__member jiro
           %li.member-list__member sabu
           %li.member-list__member shiro
-      %a{href: "/groups/334/edit"}
-        .main-header__edit-btn Edit
+      = link_to "Edit", "edit", class: "main-header__edit-btn"
     .messages
       = render @messages
     .form
