@@ -1,13 +1,20 @@
 $(function() {
   var searchResult = $("#user-search-result")
-
   function appendSearchResult(user) {
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${user.name}</p>
                   <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
                 </div>`
-                searchResult.append(html);
+    searchResult.append(html);
                 (`#data-user-id="${user.id}"`)
+  }
+  function appendNoUser(nouser) {
+    var html = `<div class="chat-group-user clearfix">
+                  <p class="chat-group-user__name">
+                    ${ nouser }
+                  </p>
+                </div>`
+    searchResult.append(html);
   }
 
   $("#user-search-field").on("keyup", function() {
@@ -28,6 +35,7 @@ $(function() {
           })
         }
         else {
+          appendNoUser("一致するユーザーは見つかりません。")
         }
       })
 
