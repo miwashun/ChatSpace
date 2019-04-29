@@ -30,7 +30,7 @@
             = current_user.name
       - if @others.present?
         - @others.each do |user|
-          .chat-group-user.clearfix.js-chat-member{id: "chat-group-user-#{user.id}"}
+          .chat-group-user.clearfix.js-add-user{id: "chat-group-user-#{user.id}"}
             %input#group_user_ids{name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}/
             %p.chat-group-user__name
               = user.name
