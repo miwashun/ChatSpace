@@ -8,6 +8,7 @@ $(function() {
                 </div>`
                 $(".chat-group-users.js-add-user").append(html);
   }
+
   $("#user-search-result").on('click',".chat-group-user__btn--add",function(){
     var id = $(this).attr('data-user-id');
     var name = $(this).attr('data-user-name');
