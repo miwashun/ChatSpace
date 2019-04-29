@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
-
+    @others = @group.users.where.not(id: current_user.id)
   end
 
   def update
