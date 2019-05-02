@@ -30,10 +30,14 @@ $(function() {
 
       .done(function(users) {
         searchResult.empty();
+
         if (users.length !== 0) {
           users.forEach(function(user){
+          var addMember = $('#' + user.id).attr('id');
+            if (addMember != user.id){
               var html = appendSearchResult(user);
               searchResult.append(html)
+            }
           })
         }
 

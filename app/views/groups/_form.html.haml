@@ -23,14 +23,14 @@
     .chat-group-form__field--left
       = f.label :チャットメンバー, class: 'chat-group-form__field__label', for: "chat_group_チャットメンバー"
     .chat-group-form__field--right
-      .chat-group-users.js-add-user{value: @group.user_ids}
+      .chat-group-users.js-add-user
         .chat-group-user.clearfix.js-chat-member{id: current_user.id}
           %input{ name: "group[user_ids][]", type: "hidden", value: current_user.id ,id: "group_user_ids"}/
           %p.chat-group-user__name
             = current_user.name
         - if @others.present?
           - @others.each do |user|
-            .chat-group-user.clearfix.js-chat-member{id: "chat-group-user-#{user.id}"}
+            .chat-group-user.clearfix.js-chat-member{id: "#{user.id}"}
               %input#group_user_ids{name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}/
               %p.chat-group-user__name
                 = user.name
