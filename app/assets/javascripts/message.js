@@ -1,4 +1,23 @@
 $(function(){
+
+  var reloadMessages = function(){
+    last_message_id = ***
+    $.ajax({
+      url: ***,
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages){
+      console.log('success');
+    })
+    .fail(function(){
+      console.log('error');
+    });
+  };
+
+
+
   var messagesSelector = $('.messages')
   var createMessageSelector = $('#create_message')
   var submitBtnSelector = $('.new_message__submit-btn')
