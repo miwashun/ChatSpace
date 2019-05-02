@@ -1,4 +1,3 @@
-
 $(function() {
   var addUserSelector = $(".chat-group-users.js-add-user")
   function addbtn(user_id,user_name) {
