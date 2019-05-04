@@ -1,19 +1,32 @@
 $(function(){
 
+  // メッセージパスの時だけ自動更新
+  if (document.URL.match(/messages/)){
+    // グループIDの設定
+  var group_id = $('.main-header__current-group').attr('group_id');
   var reloadMessages = function(){
-    last_message_id = ***
+    // 最新メッセージのID取得
+    last_message_id = $('.message:last').data('message_id');
     $.ajax({
-      url: ***,
+      url: '/groups/' + group_id + '/api/messages',
       type: 'GET',
       dataType: 'json',
       data: {id: last_message_id}
     })
     .done(function(messages){
-      console.log('success');
+      messages.forEach(function(message){
+        var html = buildMessageHTML(message);
+        messagesSelector.append(html)
+        messagesSelector.animate({scrollTop: messagesSelector[0].scrollHeight}, 500, 'swing');
+      });
     })
     .fail(function(){
-      console.log('error');
+      alert('自動更新が出来ていません。');
+      submitBtnSelector.prop('disabled', false);
     });
+  }
+  // ５秒に１回更新
+    setInterval(reloadMessages, 5000);
   };
 
 
@@ -23,8 +36,9 @@ $(function(){
   var submitBtnSelector = $('.new_message__submit-btn')
 
   function buildMessageHTML(message){
+    var messageContent = (message.content) ? message.content : ""
     var messageImage = (message.image) ? `<img class: 'form__mask__image' src="${message.image}">` : ""
-    var html = `<div class="message">
+    var html = `<div class="message" data-message_id="${message.id}">
                   <div class="message__upper-info">
                     <p class="message__upper-info__user">
                       ${message.user_name}
@@ -35,7 +49,7 @@ $(function(){
                   </div>
                   <p class="message__text">
                       <p class="lower-message__content">
-                        ${message.content}
+                        ${messageContent}
                       </p>
                     ${messageImage}
                   </p>
