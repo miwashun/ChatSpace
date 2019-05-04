@@ -3,9 +3,38 @@ $(function(){
   var createMessageSelector = $('#create_message')
   var submitBtnSelector = $('.new_message__submit-btn')
 
+
+  if (document.URL.match(/messages/)){
+    var group_id = $('.main-header__current-group').attr('group_id');
+    var reloadMessages = function(){
+      var last_message_id = $('.message:last').data('message_id');
+      $.ajax({
+        url: '/groups/' + group_id + '/api/messages',
+        type: 'GET',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+
+      .done(function(messages){
+        messages.forEach(function(message){
+          var html = buildMessageHTML(message);
+          messagesSelector.append(html)
+          messagesSelector.animate({scrollTop: messagesSelector[0].scrollHeight}, 500, 'swing');
+        });
+      })
+
+      .fail(function(){
+        alert('自動更新が出来ていません。');
+        submitBtnSelector.prop('disabled', false);
+      });
+    }
+    setInterval(reloadMessages, 5000);
+  };
+
   function buildMessageHTML(message){
+    var messageContent = (message.content) ? message.content : ""
     var messageImage = (message.image) ? `<img class: 'form__mask__image' src="${message.image}">` : ""
-    var html = `<div class="message">
+    var html = `<div class="message" data-message_id="${message.id}">
                   <div class="message__upper-info">
                     <p class="message__upper-info__user">
                       ${message.user_name}
@@ -16,7 +45,7 @@ $(function(){
                   </div>
                   <p class="message__text">
                       <p class="lower-message__content">
-                        ${message.content}
+                        ${messageContent}
                       </p>
                     ${messageImage}
                   </p>
