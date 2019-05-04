@@ -1,39 +1,35 @@
 $(function(){
-
-  // メッセージパスの時だけ自動更新
-  if (document.URL.match(/messages/)){
-    // グループIDの設定
-  var group_id = $('.main-header__current-group').attr('group_id');
-  var reloadMessages = function(){
-    // 最新メッセージのID取得
-    last_message_id = $('.message:last').data('message_id');
-    $.ajax({
-      url: '/groups/' + group_id + '/api/messages',
-      type: 'GET',
-      dataType: 'json',
-      data: {id: last_message_id}
-    })
-    .done(function(messages){
-      messages.forEach(function(message){
-        var html = buildMessageHTML(message);
-        messagesSelector.append(html)
-        messagesSelector.animate({scrollTop: messagesSelector[0].scrollHeight}, 500, 'swing');
-      });
-    })
-    .fail(function(){
-      alert('自動更新が出来ていません。');
-      submitBtnSelector.prop('disabled', false);
-    });
-  }
-  // ５秒に１回更新
-    setInterval(reloadMessages, 5000);
-  };
-
-
-
   var messagesSelector = $('.messages')
   var createMessageSelector = $('#create_message')
   var submitBtnSelector = $('.new_message__submit-btn')
+
+
+  if (document.URL.match(/messages/)){
+    var group_id = $('.main-header__current-group').attr('group_id');
+    var reloadMessages = function(){
+      var last_message_id = $('.message:last').data('message_id');
+      $.ajax({
+        url: '/groups/' + group_id + '/api/messages',
+        type: 'GET',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+
+      .done(function(messages){
+        messages.forEach(function(message){
+          var html = buildMessageHTML(message);
+          messagesSelector.append(html)
+          messagesSelector.animate({scrollTop: messagesSelector[0].scrollHeight}, 500, 'swing');
+        });
+      })
+
+      .fail(function(){
+        alert('自動更新が出来ていません。');
+        submitBtnSelector.prop('disabled', false);
+      });
+    }
+    setInterval(reloadMessages, 5000);
+  };
 
   function buildMessageHTML(message){
     var messageContent = (message.content) ? message.content : ""
