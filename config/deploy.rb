@@ -10,8 +10,7 @@ set :repo_url, "git@github.com:miwashun/ChatSpace.git"
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
 set :rbenv_type, :user
-set :rbenv_ruby, '2.5.1'
-set :rbenv_custom_path, '/root/.rbenv'
+set :rbenv_ruby, '2.3.1'
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
