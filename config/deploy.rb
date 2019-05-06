@@ -10,7 +10,7 @@ set :repo_url, "git@github.com:miwashun/ChatSpace.git"
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
 set :rbenv_type, :user
-set :rbenv_ruby_version, 'ruby_2.3.1'
+set :rbenv_ruby, '2.3.1'
 
 
 # Default value for :format is :airbrussh.
@@ -41,7 +41,7 @@ set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 # Uncomment the following to require manually verifying the host key before first deploy.
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/miwalock.pem']  #例：~/.ssh/key_pem.pem
+                  keys: ['/.ssh/miwalock.pem']  #例：~/.ssh/key_pem.pem
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
