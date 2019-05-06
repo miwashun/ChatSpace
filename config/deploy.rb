@@ -37,6 +37,12 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  # AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  # AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+  }
 # Uncomment the following to require manually verifying the host key before first deploy.
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/miwalock.pem']  #例：~/.ssh/key_pem.pem
