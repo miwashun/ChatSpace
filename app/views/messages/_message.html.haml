@@ -9,3 +9,7 @@
       %p.lower-message__content
         = message.content
     = image_tag message.image.url, class: 'form__mask__image' if message.image.present?
+%li
+  = link_to message_path, method: :delete,data: {confirm: '削除しますか？'} do
+    %button.delete--message
+      削除する

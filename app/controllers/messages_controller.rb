@@ -15,6 +15,11 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy ? (redirect_to messages_path, notice: "「#{@message.title}」を削除しました。") : (render :index)
+  end
+
   private
 
   def message_params
