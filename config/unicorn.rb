@@ -1,4 +1,4 @@
-app_path = File.expand_path('../../../', __FILE__)
+app_path = File.expand_path('../..', __dir__)
 
 worker_processes 1
 
@@ -18,7 +18,7 @@ check_client_connection false
 
 run_once = true
 
-before_exec do |server|
+before_exec do |_server|
   ENV['BUNDLE_GEMFILE'] = @app_path + "/current/Gemfile"
 end
 
