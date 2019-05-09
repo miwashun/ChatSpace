@@ -6,18 +6,18 @@ AllCops:
     - db/schema.rb
     - node_modules/**/*
     - db/migrate/*
-    - vender/**/*
+    - vendor/**/*
   # Rails向けのRails copsを実行。"rubocop -R"と同じ
   Rails:
-  enable: true
+    enabled: true
 
 # "Missing top-level class documentation comment."を無効
-Style/Documantation:
+Style/Documentation:
   Enabled: false
 
 # "Prefer single-quoted strings when you don't need string interpolation or special symbols."を無効
-Style/StringLinterals:
-  Enable: false
+Style/StringLiterals:
+  Enabled: false
 
 # "Line is too long"を無効
 Metrics/LineLength:
